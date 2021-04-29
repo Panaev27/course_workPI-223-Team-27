@@ -22,12 +22,12 @@ public class Calculator extends HttpServlet {
 	}
 	
 	private static class RequestCalc {
-		private final HashMap<String, Double> promoMap; //�������� ���������
-		private final int[] ArrDoor; //�����
-		private final double[] ArrTime; //���� ����������
-		private final double[] ArrType; //��� �������������
-		private final int[] ArrFoundation; //���������
-		private final int[] ArrPanel; //������
+		private final HashMap<String, Double> promoMap; //Хеш-меп с промокодами и соответствующими коофициентами скидки
+		private final int[] ArrDoor; //Цены дверей
+		private final double[] ArrTime; //Цены, в зависимости от времени
+		private final double[] ArrType; //Цены от типа ангара
+		private final int[] ArrFoundation; //Цены от типа фундамента
+		private final int[] ArrPanel; //Цены от вида панелей
 		private final String inputDoor;
 		private final String inputTime;
 		private final String inputx;
@@ -50,12 +50,12 @@ public class Calculator extends HttpServlet {
 			this.inputFormHangar = formHangar;
 			this.inputPromo = promo;
 			this.inputPanel = panel;
-			promoMap = new HashMap<String, Double>(); //�������� ���������
-			ArrDoor = new int[]{6900, 9000, 8400, 4000}; //�����
-			ArrTime = new double[]{0.5, 0.75, 1, 2.5}; //���� ����������
-			ArrType = new double[]{1.15,1}; //��� �������������
-			ArrFoundation = new int[]{0,650,3000,1400}; //���������
-			ArrPanel = new int[]{1200,1600,2500}; //������
+			promoMap = new HashMap<String, Double>();
+			ArrDoor = new int[]{6900, 9000, 8400, 4000};
+			ArrTime = new double[]{0.5, 0.75, 1, 2.5};
+			ArrType = new double[]{1.15,1};
+			ArrFoundation = new int[]{0,650,3000,1400};
+			ArrPanel = new int[]{1200,1600,2500};
 			promoMap.put("Romashka", 0.9);
 			promoMap.put("sudo getZachet", 0.5);
 			promoMap.put("Kaz", 0.85);
@@ -97,6 +97,7 @@ public class Calculator extends HttpServlet {
 			int formHangar;
 			String promo = inputPromo;
 			int panel;
+			//Пытаемся прочитать вход как числа
 			try { 
 				door=Integer.parseInt(inputDoor);
 				time=Integer.parseInt(inputTime);
@@ -138,7 +139,7 @@ public class Calculator extends HttpServlet {
 			price = (hangar.getHangarArea()*ArrPanel[panel]*ArrType[type]+hangar.getHangarFoundationArea()*ArrFoundation[foundation]+hangar.getHangarDoorArea()*ArrDoor[door])*getTime(time)*getPromo(promo);
 			return Math.floor(price*100)/100;
 		}
-		//�������� ������������ � ����������� �� �������
+		//функция возвращает коофициент в зависимости от времени постройки
 		private double getTime(int time) {
 			if (time<2) {
 				return ArrTime[3];
@@ -150,7 +151,7 @@ public class Calculator extends HttpServlet {
 				return ArrTime[0];
 			}
 		}
-		
+		//функция возвращает размер скидки, если верно введён промокод.
 		public double getPromo(String promo) {
 	        if (promoMap.containsKey(promo)) {
 	            return promoMap.get(promo);
