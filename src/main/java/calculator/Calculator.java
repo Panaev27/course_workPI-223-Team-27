@@ -76,7 +76,7 @@ public class Calculator extends HttpServlet {
 			request.getParameter("promo"),
 			request.getParameter("panel"));
 			}
-		public double CalculateHangarCost(HttpServletRequest request) {
+		public void CalculateHangarCost(HttpServletRequest request) {
 			request.setAttribute("doorResult", inputDoor);
 			request.setAttribute("timeResult", inputTime);
 			request.setAttribute("xResult", inputx);
@@ -137,7 +137,7 @@ public class Calculator extends HttpServlet {
 				break;
 			 }
 			price = (hangar.getHangarArea()*ArrPanel[panel]*ArrType[type]+hangar.getHangarFoundationArea()*ArrFoundation[foundation]+hangar.getHangarDoorArea()*ArrDoor[door])*getTime(time)*getPromo(promo);
-			return Math.floor(price*100)/100;
+			request.setAttribute("price", Double.toString(Math.floor(price*100)/100));
 		}
 		//функция возвращает коофициент в зависимости от времени постройки
 		private double getTime(int time) {
