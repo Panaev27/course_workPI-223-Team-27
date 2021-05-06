@@ -137,7 +137,7 @@ public class Calculator extends HttpServlet {
 				break;
 			 }
 			price = (hangar.getHangarArea()*ArrPanel[panel]*ArrType[type]+hangar.getHangarFoundationArea()*ArrFoundation[foundation]+hangar.getHangarDoorArea()*ArrDoor[door])*getTime(time)*getPromo(promo);
-			request.setAttribute("price", inputFoundation);//Double.toString(Math.floor(price*100)/100));
+			request.setAttribute("price", Double.toString(price));
 		}
 		//функция возвращает коофициент в зависимости от времени постройки
 		private double getTime(int time) {
