@@ -22,7 +22,7 @@
 		</select><br>
         <label for="fifth">Выберите форму ангара: </label>
         <select name="formHangar">
-				<option value="0" >Арочный <% if (request.getParameter("formHangar") = 0) { out.print(disabled); } %> </option>
+				<option value="0" <% if (request.getParameter("formHangar") == 0) { out.print(disabled); } %>>Арочный </option>
 				<option value="1" >Прямостенный</option>
 				<option value="2" >Шатровый</option>
 		</select><br>
