@@ -19,7 +19,7 @@
 <p><strong>Тип фундамента:</strong> ${foundationResult}</p>
 <p><strong>Тип двери:</strong> ${doorResult}</p>
 <p><strong>Промокод:</strong> ${promoResult}</p>
-<p><strong>Итоговая сумма:</strong> ${price}</p>
+<p><strong>Итоговая сумма: </strong> ${price}</p>
 
 <form action="${pageContext.request.contextPath}/Form.jsp">
     <input type="submit" name="sign" value="Назад">

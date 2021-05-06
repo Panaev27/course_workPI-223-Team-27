@@ -48,7 +48,7 @@
 				<option value="2" >Шторные</option>
 				<option value="3" >Рулонные</option>
 		</select><br>
-        <label for="tenth">Промокод: </label>
+        <label for="tenth">Промокод:</label>
         <input type="text" name="promo" id="promo" value="${promo}"><br>
         <input type="submit" name="sign" value="Calculate">
     </form>
