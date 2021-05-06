@@ -8,6 +8,5 @@ after_script:
 - echo "Script finished"
 after_succes:
 - echo "Build ready"
-- ls -l $TRAVIS_BUILD_DIR/Lab4_PR27/target
 after_failure:
 - echo "Build failure"
