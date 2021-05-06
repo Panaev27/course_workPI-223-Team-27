@@ -1,4 +1,4 @@
-package rgr;
+package calculator;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="Calculator", urlPatterns="/JavaCalculator")
+@WebServlet(name="Calc", urlPatterns="/JavaCalc")
 public class Calculator extends HttpServlet {
 	
 	
