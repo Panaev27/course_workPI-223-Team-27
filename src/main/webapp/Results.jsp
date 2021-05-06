@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Результат вычисления площади поверхности цилиндра</title>
+<title>Результат вычисления стоимости ангара</title>
 </head>
 <body>
-<h1>Результат вычисления площади поверхности цилиндра</h1>
+<h1>Результат вычисления стоимости ангара</h1>
 <h2>Ваши введеные данные:</h2>
-<p><strong>Радиус цилиндра:</strong> ${radius_result}</p>
-<p><strong>Высота цилиндра:</strong> ${height_result}</p>
-<p><strong>Площадь:</strong> ${result}</p>
+<p><strong>Высота:</strong> ${inputx}</p>
+<p><strong>Длина:</strong> ${inputy}</p>
+<p><strong>Ширина:</strong> ${inputz}</p>
+<p><strong>Итоговая сумма:</strong> ${price}</p>
 
 <form action="${pageContext.request.contextPath}/Form.jsp">
     <input type="submit" name="sign" value="Назад">
