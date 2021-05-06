@@ -27,7 +27,7 @@ public class PDFWriter {
     public PDFWriter() {
     	
     }
-    public void Create(String numberpdf) {
+    public void Create() {
       	
     	Document document = new Document(); //ñîçäàíèå êëàññà Document
 		try {

@@ -20,6 +20,8 @@ public class Calc extends HttpServlet {
 		 
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
 		
+		PDFWriter PDF = new PDFWriter();
+		PDF.Create();
 	}
 	
 	private static class RequestCalc {
