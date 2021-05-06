@@ -1,4 +1,4 @@
-package rgr;
+package calculator;
 
 public class TentHangar extends Hangar {
 
