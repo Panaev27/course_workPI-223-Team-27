@@ -14,12 +14,12 @@
         <label for="second">Длина: </label>
         <input type="text" name="length" id="length" value="${inputy}">
         <label for="third">Ширина: </label>
-        <input type="text" name="width" id="width" value="${inputz}">
-        <label for="fourth">Выберите тип строительства ангара: </label>
+        <input type="text" name="width" id="width" value="${inputz}"><br>
+        <p><label for="fourth">Выберите тип строительства ангара: </label>
         <select name="type">
 				<option value="0" >Каркасно-рамочные</option>
 				<option value="1" >Каркасно-щитовой</option>
-		</select>
+		</select></p>
         <label for="fifth">Выберите форму ангара: </label>
         <select name="formHangar">
 				<option value="0" >Арочный</option>
