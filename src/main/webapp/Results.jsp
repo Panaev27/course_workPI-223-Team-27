@@ -9,9 +9,9 @@
 <body>
 <h1>Результат вычисления стоимости ангара</h1>
 <h2>Ваши введеные данные:</h2>
-<p><strong>Высота:</strong> ${inputx}</p>
-<p><strong>Длина:</strong> ${inputy}</p>
-<p><strong>Ширина:</strong> ${inputz}</p>
+<p><strong>Высота:</strong> ${xResult}</p>
+<p><strong>Длина:</strong> ${yResult}</p>
+<p><strong>Ширина:</strong> ${zResult}</p>
 <p><strong>Итоговая сумма:</strong> ${price}</p>
 
 <form action="${pageContext.request.contextPath}/Form.jsp">
