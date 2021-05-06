@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name="Calc", urlPatterns="/JavaCalc")
 public class Calc extends HttpServlet {
+	
+	public static String radiusGet;
+	public static String heightGet;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
@@ -27,6 +30,8 @@ public class Calc extends HttpServlet {
 		private RequestCalc (String radius, String height) {
 			this.radius_calc = radius;
 			this.height_calc = height;
+			radiusGet=radius;
+			heightGet=height;
 			}
 		
 		public static RequestCalc fromRequestParameters(HttpServletRequest request) {
