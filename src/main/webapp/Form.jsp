@@ -10,11 +10,11 @@
 <h1>Калькулятор расчета цены ангара</h1>
     <form action="${pageContext.request.contextPath}/JavaCalc" method="post">
         <label for="first">Высота:</label>
-        <input type="text" name="height" id="height" value="${x}">
+        <input type="text" name="x" id="x" value="${x}">
         <label for="second">Длина: </label>
-        <input type="text" name="length" id="length" value="${y}">
+        <input type="text" name="y" id="y" value="${y}">
         <label for="third">Ширина: </label>
-        <input type="text" name="width" id="width" value="${z}"><br>
+        <input type="text" name="z" id="z" value="${z}"><br>
         <label for="fourth">Выберите тип строительства ангара: </label>
         <select name="type">
 				<option value="0" >Каркасно-рамочные</option>
@@ -33,7 +33,7 @@
 				<option value="2" >Утепленная сендвич-панель</option>
 		</select><br>
         <label for="seventh">Выберите сроки(мес.): </label>
-        <input type="text" name="height" id="height" value="${time}"><br>
+        <input type="text" name="time" id="time" value="${time}"><br>
         <label for="eighth">Выберите фундамент: </label>
         <select name="foundation">
 				<option value="0" >Отсутствие</option>
