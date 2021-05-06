@@ -12,8 +12,8 @@
 <p><strong>Радиус цилиндра:</strong> ${radius_result}</p>
 <p><strong>Высота цилиндра:</strong> ${height_result}</p>
 <p><strong>Площадь:</strong> ${result}</p>
-<a href="${pageContext.request.contextPath}/Check.pdf"> Открыть PDF-файл</a>
-<a href="/tmp/Check.pdf" download> Скачать PDF-файл</a>
+<a href="/Calculate4/Check.pdf"> Открыть PDF-файл</a>
+<a href="/Calculate4/Check.pdf" download> Скачать PDF-файл</a>
 <form action="${pageContext.request.contextPath}/Form.jsp">
     <input type="submit" name="sign" value="Назад">
     </form>
