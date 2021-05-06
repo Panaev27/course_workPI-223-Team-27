@@ -97,8 +97,6 @@ public class Calculator extends HttpServlet {
 			int formHangar;
 			String promo = inputPromo;
 			int panel;
-			String test;
-			test=inputx+", "+inputTime+", "+inputPromo;
 			//Пытаемся прочитать вход как числа
 			try { 
 				door=Integer.parseInt(inputDoor);
@@ -139,7 +137,7 @@ public class Calculator extends HttpServlet {
 				break;
 			 }
 			price = (hangar.getHangarArea()*ArrPanel[panel]*ArrType[type]+hangar.getHangarFoundationArea()*ArrFoundation[foundation]+hangar.getHangarDoorArea()*ArrDoor[door])*getTime(time)*getPromo(promo);
-			request.setAttribute("price", test);
+			request.setAttribute("price", Double.toString(price));
 		}
 		//функция возвращает коофициент в зависимости от времени постройки
 		private double getTime(int time) {
