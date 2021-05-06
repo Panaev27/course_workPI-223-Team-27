@@ -33,7 +33,7 @@
 				<option value="2" >Утепленная сендвич-панель</option>
 		</select><br>
         <label for="seventh">Выберите сроки(мес.): </label>
-        <input type="text" name="height" id="height" value="${height}"><br>
+        <input type="text" name="height" id="height" value="${time}"><br>
         <label for="eighth">Выберите фундамент: </label>
         <select name="foundation">
 				<option value="0" >Отсутствие</option>
