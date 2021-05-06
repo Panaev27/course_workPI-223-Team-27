@@ -9,9 +9,9 @@
 <body>
 <h1>Результат вычисления стоимости ангара</h1>
 <h2>Ваши введеные данные:</h2>
-<p><strong>Высота:</strong> ${xResult}</p>
-<p><strong>Длина:</strong> ${yResult}</p>
-<p><strong>Ширина:</strong> ${zResult}</p>
+<p><strong>Длина:</strong> ${xResult}</p>
+<p><strong>Ширина:</strong> ${yResult}</p>
+<p><strong>Высота:</strong> ${zResult}</p>
 <p><strong>Тип ангара:</strong> ${typeResult}</p>
 <p><strong>Форма ангара:</strong> ${formHangarResult}</p>
 <p><strong>Тип панели:</strong> ${panelResult}</p>

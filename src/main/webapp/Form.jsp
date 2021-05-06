@@ -9,11 +9,11 @@
 <body>
 <h1>Калькулятор расчета цены ангара</h1>
     <form action="${pageContext.request.contextPath}/JavaCalc" method="post">
-        <label for="first">Высота:</label>
+        <label for="first">Длина:</label>
         <input type="text" name="x" id="x" value="${x}">
-        <label for="second">Длина: </label>
+        <label for="second">Ширина: </label>
         <input type="text" name="y" id="y" value="${y}">
-        <label for="third">Ширина: </label>
+        <label for="third">Высота: </label>
         <input type="text" name="z" id="z" value="${z}"><br>
         <label for="fourth">Выберите тип строительства ангара: </label>
         <select name="type">
@@ -22,7 +22,7 @@
 		</select><br>
         <label for="fifth">Выберите форму ангара: </label>
         <select name="formHangar">
-				<option value="0" >Арочный</option>
+				<option value="0" >Арочный <% if (request.getParameter("formHangar") = 0) { out.print(disabled); } %> </option>
 				<option value="1" >Прямостенный</option>
 				<option value="2" >Шатровый</option>
 		</select><br>
