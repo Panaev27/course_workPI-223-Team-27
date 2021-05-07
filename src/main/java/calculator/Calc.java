@@ -55,7 +55,7 @@ public class Calc extends HttpServlet {
 			height_try=0;	
 			}
 			result=2*Math.PI*radius_try*height_try+2*Math.PI*Math.pow(radius_try,2);
-			request.setAttribute("result",  new File("/app").exists());
+			request.setAttribute("result",  new File("/app/Check.pdf").exists());
 		}
 		
 	}
