@@ -62,7 +62,7 @@ public class PDFWriter {
 		 
 		//äîáàâëåíèå òàáëèöû
 		 PdfPTable table = new PdfPTable(2); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
-		 addHeader(table);
+		 //addHeader(table);
 		 addRows(table);
 		 try {
 			document.add(table);
@@ -76,8 +76,15 @@ public class PDFWriter {
     private void addRows(PdfPTable table) {
 		
 		//çàïîëíåíèå òàáëèöû ââîäèìûìè çíà÷åíèÿ â òåêñòîâûå ïîëÿ íà ãëàâíîé ôîðìå
+    	String[] columnTitles= {"Lenght", "Width", "Height", "Type", "Form", "Panel", "Time", "Foundation", "Door", "Promo", "Price"};
 		for (int i=0;i<Calculator.outputForFile.length;i++) {
+			PdfPCell header = new PdfPCell();
+			header.setBackgroundColor(BaseColor.LIGHT_GRAY);
+	        header.setBorderWidth(2);
+	        header.setPhrase(new Phrase(columnTitles[i]));
+	        table.addCell(header);
 			table.addCell(Calculator.outputForFile[i]);
+			
 		}
 		
 	    //âûøå äîëæåí áûòü òåêñò íà ðóññêîì ÿçûêå, êàê åãî âûâåñòè ìîæíî ïîñìîòðåòü â ñïðàâêå.
