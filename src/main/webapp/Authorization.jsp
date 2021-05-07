@@ -9,12 +9,14 @@
 </head>
 <body>
 <h1 class=titl>Авторизация</h1>
-
-        <label class=lab for="first">Логин:</label>
-        <input class=box type="text" name="login" id="login" value="${login}">
-        <label class=lab for="second">Пароль: </label>
-        <input class=box type="text" name="password" id="password" value="${password}">
+    <form action="${pageContext.request.contextPath}/JavaAuth" method="post" class=lab>
+<center>
+        <label for="first">Логин:</label>
+        <input class=box type="text" name="login" id="login" value="${login}"><br>
+        <label for="second">Пароль: </label>
+        <input class=box type="text" name="password" id="password" value="${password}"><br>
         <input class=btn type="submit" name="input" value="Войти">
-
+</center>
+	</form>
     </body>
 </html>
