@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import calculator.Calculator.RequestCalc;
+
 @WebServlet(name="Auth", urlPatterns="/JavaAuth")
 public class Authorization extends HttpServlet {
 	
@@ -16,6 +18,7 @@ public class Authorization extends HttpServlet {
 	private static String inputPass;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestAuth Calc = RequestAuth.fromRequestParameters(request);
 		if (trueAuth(inputLogin, inputPass)) {
 			request.getRequestDispatcher("/Form.jsp").forward(request, response);
 		};
