@@ -4,8 +4,8 @@
   <artifactId>Calculate4</artifactId>
   <version>1</version>
   <packaging>war</packaging>
-  <name>Laba4</name>
-  <description>Test for laba4</description>
+  <name>Calculate4</name>
+  <description>Calculate4</description>
   <url>http://maven.apache.org</url>
   
   <build>
