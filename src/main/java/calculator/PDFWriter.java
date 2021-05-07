@@ -64,7 +64,7 @@ public class PDFWriter {
     	
 		 
 		//äîáàâëåíèå òàáëèöû
-		 PdfPTable table = new PdfPTable(2); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
+		 PdfPTable table = new PdfPTable(11); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
 		 addHeader(table);
 		 addRows(table);
 		 
