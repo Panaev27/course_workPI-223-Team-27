@@ -14,7 +14,7 @@
 <p><strong>Площадь:</strong> "${pageContext.request.contextPath}"</p>
 <a href="/Calculate4/Check.pdf"> Открыть PDF-файл</a>
 <a href="/Calculate4/Check.pdf" download> Скачать PDF-файл</a>
-<form action="${pageContext.request.contextPath}/Form.jsp">
+<form action="/Form.jsp">
     <input type="submit" name="sign" value="Назад">
     </form>
 
