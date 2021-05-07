@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name="LogControl", urlPatterns="/JavaLogControl")
 public class LoginControl extends HttpServlet {
 	
-	public static ArrayList<String> logins;
-	public static ArrayList<String> passwords;
+	public static ArrayList<String> logins = new ArrayList<String>();
+	public static ArrayList<String> passwords = new ArrayList<String>();
 	
 	public LoginControl() {
 		logins.add("1");
