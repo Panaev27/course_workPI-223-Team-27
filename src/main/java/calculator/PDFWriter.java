@@ -26,7 +26,7 @@ public class PDFWriter {
     	Document document = new Document(); //ñîçäàíèå êëàññà Document
 		try {
 			//  /var/apache-tomcat-9.0.39/webapps/CreatePDF/
-			PdfWriter.getInstance(document, new FileOutputStream(new File(PDFWriter.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()+"/Check.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(new File("/Check.pdf"));
 		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();
 		}
@@ -81,8 +81,8 @@ public class PDFWriter {
 private void addRows(PdfPTable table) {
 		
 		//çàïîëíåíèå òàáëèöû ââîäèìûìè çíà÷åíèÿ â òåêñòîâûå ïîëÿ íà ãëàâíîé ôîðìå
-		String cell1 = Calc.radiusGet;
-		String cell2 = Calc.heightGet;
+		String cell1 = "1";//Calc.radiusGet;
+		String cell2 = "2";//Calc.heightGet;
 				
 		table.addCell(cell1);
 	    table.addCell(cell2);
