@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import calculator.Calculator.RequestCalc;
-
 @WebServlet(name="Auth", urlPatterns="/JavaAuth")
 public class Authorization extends HttpServlet {
 	
