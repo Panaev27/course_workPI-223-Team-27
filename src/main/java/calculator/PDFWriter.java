@@ -63,7 +63,7 @@ public class PDFWriter {
 		//äîáàâëåíèå òàáëèöû
 		 PdfPTable table = new PdfPTable(2); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
 		 //addHeader(table);
-		 addRows(table);
+		 addTableCells(table);
 		 try {
 			document.add(table);
 		} catch (DocumentException e) {
@@ -73,7 +73,7 @@ public class PDFWriter {
 	    document.close(); //çàêðûòèå è ñîõðàíåíèå äîêóìåíòà PDF
     }
     
-    private void addRows(PdfPTable table) {
+    private void addTableCells(PdfPTable table) {
 		
 		//çàïîëíåíèå òàáëèöû ââîäèìûìè çíà÷åíèÿ â òåêñòîâûå ïîëÿ íà ãëàâíîé ôîðìå
     	String[] columnTitles= {"Lenght", "Width", "Height", "Type", "Form", "Panel", "Time", "Foundation", "Door", "Promo", "Price"};
@@ -84,20 +84,8 @@ public class PDFWriter {
 	        header.setPhrase(new Phrase(columnTitles[i]));
 	        table.addCell(header);
 			table.addCell(Calculator.outputForFile[i]);
-			
 		}
 		
 	    //âûøå äîëæåí áûòü òåêñò íà ðóññêîì ÿçûêå, êàê åãî âûâåñòè ìîæíî ïîñìîòðåòü â ñïðàâêå.
 	}
-
-private void addHeader(PdfPTable table) {
-	Stream.of("Lenght", "Width", "Height", "Type", "Form", "Panel", "Time", "Foundation", "Door", "Promo", "Price")
-      .forEach(columnTitle -> {
-        PdfPCell header = new PdfPCell();
-        header.setBackgroundColor(BaseColor.LIGHT_GRAY);
-        header.setBorderWidth(2);
-        header.setPhrase(new Phrase(columnTitle));
-        table.addCell(header);
-    });
-}
 }
