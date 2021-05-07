@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class HTMLWriter implements Formater, WriterInFile {
+import calculator.CreationTable;
+import calculator.WriterInFile;
+
+public class HTMLWriter implements CreationTable, WriterInFile {
 	
 	private String outputPath;//���� �� �����
 	
