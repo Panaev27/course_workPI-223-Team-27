@@ -1,18 +1,12 @@
 package calculator;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.*;
 import java.util.stream.Stream;
 
-import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
@@ -32,8 +26,7 @@ public class PDFWriter {
     	Document document = new Document(); //ñîçäàíèå êëàññà Document
 		try {
 			//  /var/apache-tomcat-9.0.39/webapps/CreatePDF/
-			
-			PdfWriter.getInstance(document, new FileOutputStream("/var/apache-tomcat-9.0.8/webapps/Calculate4/Check.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(new File(PDFWriter.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()+File.separator+"Output.txt"));
 		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();
 		}
