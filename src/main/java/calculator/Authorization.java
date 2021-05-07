@@ -17,6 +17,7 @@ public class Authorization extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestAuth Auth = RequestAuth.fromRequestParameters(request);
+		LoginControl.logins.size();
 		if (trueAuth(inputLogin, inputPass)) {
 			request.getRequestDispatcher("/Form.jsp").forward(request, response);
 		};
