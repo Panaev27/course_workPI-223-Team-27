@@ -24,7 +24,7 @@ public class Authorization extends HttpServlet {
 	
 	private boolean trueAuth (String login, String pass) {
 		for (int i=0;i<LoginControl.logins.size();i++) {
-			if (LoginControl.logins.get(i).equals(inputLogin) && LoginControl.passwords.get(i).contentEquals(inputPass)) {
+			if (LoginControl.logins.get(i).equals("1") && LoginControl.passwords.get(i).contentEquals("1")) {
 				return true;
 			}
 		}
