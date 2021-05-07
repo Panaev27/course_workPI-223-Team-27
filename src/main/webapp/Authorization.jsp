@@ -14,6 +14,7 @@
         <input class=box type="text" name="login" id="login" value="${login}">
         <label class=lab for="second">Пароль: </label>
         <input class=box type="text" name="password" id="password" value="${password}">
+        <input class=btn type="submit" name="input" value="Войти">
 
     </body>
 </html>
