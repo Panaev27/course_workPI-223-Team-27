@@ -81,8 +81,8 @@ public class PDFWriter {
 private void addRows(PdfPTable table) {
 		
 		//çàïîëíåíèå òàáëèöû ââîäèìûìè çíà÷åíèÿ â òåêñòîâûå ïîëÿ íà ãëàâíîé ôîðìå
-		String cell1 = "1";//Calc.radiusGet;
-		String cell2 = "2";//Calc.heightGet;
+		String cell1 = Calc.radiusGet;
+		String cell2 = Calc.heightGet;
 				
 		table.addCell(cell1);
 	    table.addCell(cell2);
