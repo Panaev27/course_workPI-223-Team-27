@@ -17,10 +17,12 @@ public class Calc extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
-		Calc.setAsRequestAttributesAndCalculate(request);
 		PDFWriter PDF = new PDFWriter();
 		PDF.Create();
+		Calc.setAsRequestAttributesAndCalculate(request);
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
+		
+		
 	}
 	
 	private static class RequestCalc {
@@ -55,7 +57,7 @@ public class Calc extends HttpServlet {
 			height_try=0;	
 			}
 			result=2*Math.PI*radius_try*height_try+2*Math.PI*Math.pow(radius_try,2);
-			request.setAttribute("result",  new File("/Check.pdf").exists());
+			request.setAttribute("result",  new File(new File(Calc.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()+"/Check.pdf").exists());
 		}
 		
 	}
