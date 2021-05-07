@@ -12,7 +12,8 @@
 <h2>Ваши введеные данные:</h2>
 <p><strong>Радиус цилиндра:</strong> ${radius_result}</p>
 <p><strong>Высота цилиндра:</strong> ${height_result}</p>
-<p><strong>Площадь:</strong> ${result}</p>
+<p><strong>Create?:</strong> ${result}</p>
+<p><strong>Path:</strong> ${result2}</p>
 <a href="/Check.pdf"> Открыть PDF-файл</a>
 <a href="/Check.pdf" download> Скачать PDF-файл</a>
 <form action="${pageContext.request.contextPath}/Form.jsp">

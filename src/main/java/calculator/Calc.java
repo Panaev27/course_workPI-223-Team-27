@@ -57,6 +57,7 @@ public class Calc extends HttpServlet {
 			height_try=0;	
 			}
 			result=2*Math.PI*radius_try*height_try+2*Math.PI*Math.pow(radius_try,2);
+			request.setAttribute("result2",  new File(Calc.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()+"/Check.pdf");
 			request.setAttribute("result",  new File(new File(Calc.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()+"/Check.pdf").exists());
 		}
 		
