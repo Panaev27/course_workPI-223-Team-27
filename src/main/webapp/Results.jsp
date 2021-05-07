@@ -22,8 +22,8 @@
 <strong>Промокод:</strong> ${promoResult}<br>
 <strong>Итоговая сумма: </strong> ${price}</p>
 
-<a  class=link href="/Check.pdf"> Открыть PDF-файл</a><br><br>
-<a  class=link href="/Check.pdf" download> Скачать PDF-файл</a><br><br>
+<a  class=link href="/Hangar.pdf"> Открыть PDF-файл</a><br><br>
+<a  class=link href="/Hangar.pdf" download> Скачать PDF-файл</a><br><br>
 
 <form action="${pageContext.request.contextPath}/Form.jsp">
     <input class=btn type="submit" name="sign" value="Назад">
