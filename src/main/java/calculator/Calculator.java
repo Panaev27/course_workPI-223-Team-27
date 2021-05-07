@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name="Calc", urlPatterns="/JavaCalc")
 public class Calculator extends HttpServlet {
 	
-	
+	public static String[] outputForFile;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.CalculateHangarCost(request);
+		PDFWriter PDF = new PDFWriter();
+		PDF.Create();
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
-		
 	}
 	
 	private static class RequestCalc {
@@ -137,6 +138,7 @@ public class Calculator extends HttpServlet {
 				break;
 			 }
 			price = (hangar.getHangarArea()*ArrPanel[panel]*ArrType[type]+hangar.getHangarFoundationArea()*ArrFoundation[foundation]+hangar.getHangarDoorArea()*ArrDoor[door])*getTime(time)*getPromo(promo);
+			outputForFile= new String[] {inputx, inputy, inputz, inputType, inputFormHangar, inputPanel, inputTime, inputFoundation, inputDoor, inputPromo, Double.toString(Math.floor(price/100)*100)};
 			request.setAttribute("price", Double.toString(Math.floor(price/100)*100));
 		}
 		//функция возвращает коофициент в зависимости от времени постройки

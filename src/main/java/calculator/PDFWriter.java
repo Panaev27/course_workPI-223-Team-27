@@ -1,4 +1,4 @@
-package CreatePDF;
+package calculator;
 
 import java.io.*;
 import java.util.stream.Stream;
@@ -25,8 +25,7 @@ public class PDFWriter {
       	
     	Document document = new Document(); //ñîçäàíèå êëàññà Document
 		try {
-			//  /var/apache-tomcat-9.0.39/webapps/CreatePDF/
-			PdfWriter.getInstance(document, new FileOutputStream(new File(new File(Calc.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()).getParent()+"/Check.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream(new File(new File(PDFWriter.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()).getParent()+"/Hangar.pdf"));
 		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();
 		}
@@ -78,20 +77,18 @@ public class PDFWriter {
 	    document.close(); //çàêðûòèå è ñîõðàíåíèå äîêóìåíòà PDF
     }
     
-private void addRows(PdfPTable table) {
+    private void addRows(PdfPTable table) {
 		
 		//çàïîëíåíèå òàáëèöû ââîäèìûìè çíà÷åíèÿ â òåêñòîâûå ïîëÿ íà ãëàâíîé ôîðìå
-		String cell1 = Calc.radiusGet;
-		String cell2 = Calc.heightGet;
-				
-		table.addCell(cell1);
-	    table.addCell(cell2);
+		for (int i=0;i<Calculator.outputForFile.length;i++) {
+			table.addCell(Calculator.outputForFile[i]);
+		}
 		
 	    //âûøå äîëæåí áûòü òåêñò íà ðóññêîì ÿçûêå, êàê åãî âûâåñòè ìîæíî ïîñìîòðåòü â ñïðàâêå.
 	}
 
 private void addHeader(PdfPTable table) {
-	Stream.of("Radius", "Height")
+	Stream.of("Lenght", "Width", "Height", "Type", "Form", "Panel", "Time", "Foundation", "Door", "Promo", "Price")
       .forEach(columnTitle -> {
         PdfPCell header = new PdfPCell();
         header.setBackgroundColor(BaseColor.LIGHT_GRAY);
