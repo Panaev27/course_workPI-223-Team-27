@@ -39,12 +39,9 @@ public class PDFWriter {
 			e.printStackTrace();
 		}
 		
-		String string_pdf = "Hello! You are cool.";
+		String string_pdf = "Your hangar parametres";
 		Paragraph paragraph = new Paragraph();
 	    paragraph.add(new Paragraph(string_pdf, new Font(times,14)));
-	    
-	    String string_pdf2 = "This test from Dyomin with respect!";
-	    paragraph.add(new Paragraph(string_pdf2, new Font(times,14)));
 	
 	    try {
 			document.add(paragraph);
@@ -64,10 +61,9 @@ public class PDFWriter {
     	
 		 
 		//äîáàâëåíèå òàáëèöû
-		 PdfPTable table = new PdfPTable(11); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
+		 PdfPTable table = new PdfPTable(2); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
 		 addHeader(table);
 		 addRows(table);
-		 
 		 try {
 			document.add(table);
 		} catch (DocumentException e) {
