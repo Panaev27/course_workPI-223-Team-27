@@ -14,7 +14,6 @@
         <input class=box type="text" name="login" id="login" value="${login}">
         <label class=lab for="second">Пароль: </label>
         <input class=box type="text" name="password" id="password" value="${password}">
-        
 
     </body>
 </html>
