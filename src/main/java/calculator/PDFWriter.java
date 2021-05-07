@@ -14,14 +14,14 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDFWriter {
+public class PDFWriter implements WriterInFile {
 	
 
 	
     public PDFWriter() {
     	
     }
-    public void Create() {
+    public void write(String[] forWrite) {
       	
     	Document document = new Document(); //ñîçäàíèå êëàññà Document
 		try {
@@ -62,7 +62,6 @@ public class PDFWriter {
 		 
 		//äîáàâëåíèå òàáëèöû
 		 PdfPTable table = new PdfPTable(2); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
-		 //addHeader(table);
 		 addTableCells(table);
 		 try {
 			document.add(table);

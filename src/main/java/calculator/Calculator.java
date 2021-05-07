@@ -18,7 +18,7 @@ public class Calculator extends HttpServlet {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.CalculateHangarCost(request);
 		PDFWriter PDF = new PDFWriter();
-		PDF.Create();
+		PDF.write(outputForFile);
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
 	}
 	
