@@ -40,6 +40,12 @@ public class Calculator extends HttpServlet {
 		private final String inputPromo;
 		private final String inputPanel;
 		
+		String[] typeToString = {"Каркасно-рамочные", "Каркасно-щитовой"};
+		String[] formToString = {"Арочный", "Прямостенный", "Шатровый"};
+		String[] panelToString = {"Облегчённая сендвич-панель", "Сендвич-панель", "Утеплённая сендвич-панель"};
+		String[] foundationToString = {"Отсутствие", "Каменный", "Железобетонный", "Бетонный"};
+		String[] doorToString = {"Распашные", "Подъёмно-секционные", "Шторные", "Рулонные"};
+		
 		private RequestCalc (String door, String time,String x,String y,String z,String type,String foundation,String formHangar,String promo,String panel) {
 			this.inputDoor = door;
 			this.inputTime = time;
@@ -78,16 +84,6 @@ public class Calculator extends HttpServlet {
 			request.getParameter("panel"));
 			}
 		public void CalculateHangarCost(HttpServletRequest request) {
-			request.setAttribute("doorResult", inputDoor);
-			request.setAttribute("timeResult", inputTime);
-			request.setAttribute("xResult", inputx);
-			request.setAttribute("yResult", inputy);
-			request.setAttribute("zResult", inputz);
-			request.setAttribute("typeResult", inputType);
-			request.setAttribute("foundationResult", inputFoundation);
-			request.setAttribute("formHangarResult",inputFormHangar);
-			request.setAttribute("promoResult",inputPromo);
-			request.setAttribute("panelResult",inputPanel);
 			int door;
 			int time;
 			double x;
@@ -121,6 +117,17 @@ public class Calculator extends HttpServlet {
 					formHangar=0;
 					panel=0;
 				}
+			
+			request.setAttribute("doorResult", doorToString[door]);
+			request.setAttribute("timeResult", inputTime);
+			request.setAttribute("xResult", inputx);
+			request.setAttribute("yResult", inputy);
+			request.setAttribute("zResult", inputz);
+			request.setAttribute("typeResult", typeToString[type]);
+			request.setAttribute("foundationResult", foundationToString[foundation]);
+			request.setAttribute("formHangarResult",formToString[formHangar]);
+			request.setAttribute("promoResult",inputPromo);
+			request.setAttribute("panelResult",panelToString[panel]);
 			double price = 0;
 			Hangar hangar;
 			switch(formHangar) {
@@ -138,7 +145,7 @@ public class Calculator extends HttpServlet {
 				break;
 			 }
 			price = (hangar.getHangarArea()*ArrPanel[panel]*ArrType[type]+hangar.getHangarFoundationArea()*ArrFoundation[foundation]+hangar.getHangarDoorArea()*ArrDoor[door])*getTime(time)*getPromo(promo);
-			outputForFile= new String[] {inputx, inputy, inputz, inputType, inputFormHangar, inputPanel, inputTime, inputFoundation, inputDoor, inputPromo, Double.toString(Math.floor(price/100)*100)};
+			outputForFile= new String[] {inputx, inputy, inputz, typeToString[type], formToString[formHangar], panelToString[panel], inputTime, foundationToString[foundation], doorToString[door], inputPromo, Double.toString(Math.floor(price/100)*100)};
 			request.setAttribute("price", Double.toString(Math.floor(price/100)*100));
 		}
 		//функция возвращает коофициент в зависимости от времени постройки
