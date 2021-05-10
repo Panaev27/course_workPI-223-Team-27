@@ -26,8 +26,8 @@ public class PDFWriter {
     	Document document = new Document(); //ñîçäàíèå êëàññà Document
 		try {
 			//  /var/apache-tomcat-9.0.39/webapps/CreatePDF/
-			PdfWriter.getInstance(document, new FileOutputStream(new File("").getCanonicalPath()+"/Check.pdf"));
-		} catch (DocumentException | IOException e) {
+			PdfWriter.getInstance(document, new FileOutputStream(new File(new File(Calc.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()).getParent()+"/Check.pdf"));
+		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();
 		}
 			 
