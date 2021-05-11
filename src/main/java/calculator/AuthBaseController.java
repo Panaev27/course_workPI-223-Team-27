@@ -36,16 +36,16 @@ public class AuthBaseController {
 		try {
 			String line;
 			boolean authInBase=false;
-			writer = new BufferedWriter(new FileWriter(fileBase,true));
 			reader = new BufferedReader(new FileReader(fileBase));
 			while((line = reader.readLine())!=null) {
 				String[] tempArr= line.split(";");
 				if (tempArr[0].equals(login) && tempArr[1].equals(password)) {
 					authInBase = true;
-					
 				}
 			}
 			reader.close();
+			writer = new BufferedWriter(new FileWriter(fileBase,true));
+			System.out.println(authInBase);
 			if (authInBase == false) {
 				writer.newLine();
 				writer.append(login+";"+password);
