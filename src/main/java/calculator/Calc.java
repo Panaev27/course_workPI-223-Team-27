@@ -20,7 +20,6 @@ public class Calc extends HttpServlet {
 		Calc.setAsRequestAttributesAndCalculate(request);
 		PDFWriter PDF = new PDFWriter();
 		PDF.Create();
-		request.setAttribute("result",  new File("/app/Check.pdf").exists());
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
 		
 	}
