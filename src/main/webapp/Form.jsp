@@ -55,5 +55,9 @@
         <input class=box type="text" name="promo" id="promo" value="${promo}"><br>
         <input class=btn type="submit" name="sign" value="Вычислить">
     </form>
+    
+    <form action="${pageContext.request.contextPath}/Authorization.jsp">
+    <input class=btn type="submit" name="sign" value="Назад">
+    </form>
     </body>
 </html>
