@@ -21,20 +21,23 @@
         <input class=box type="text" name="newLogin" id="newLogin" value="${newLogin}"><br>
         <label for="second">Новый пароль: </label>
         <input class=box type="text" name="newPassword" id="newPassword" value="${newPassword}"><br><br>
+        
+        <strong> </strong> ${labelText}<br><br>
+        
         <input class=btn type="submit" name="create" value="Создать">
         <input class=btn type="submit" name="change" value="Изменить">
         <input class=btn type="submit" name="del" value="Удалить"><br><br>
-</center>
-	</form>      
+
+	</form>    
+	  
     <form action="${pageContext.request.contextPath}/Authorization.jsp">
-    <input class=btn type="submit" name="sign" value="Назад"><br><br>
-    
-    <strong> </strong> ${labelText}
+    <input class=btn type="submit" name="sign" value="Назад">
+    </form>  
+    <form action="${pageContext.request.contextPath}/Form.jsp">
+    <input class=btn type="submit" name="sign" value="Калькулятор">
     </form>
-        
-        
+                  
 </center>
-	</form>
 	
     </body>
 </html>
