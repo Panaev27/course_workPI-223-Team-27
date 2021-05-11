@@ -18,8 +18,8 @@ public class Calc extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.setAsRequestAttributesAndCalculate(request);
-		PDFWriter PDF = new PDFWriter();
-		PDF.Create();
+		WriteInFile.addAuth(radiusGet, heightGet);
+		request.setAttribute("result",  WriteInFile.checkAuth(radiusGet, heightGet));
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
 		
 	}
