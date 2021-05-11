@@ -16,19 +16,10 @@ public class Authorization extends HttpServlet {
 	private static String inputPass;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestAuth Calc = RequestAuth.fromRequestParameters(request);
-		if (trueAuth(inputLogin, inputPass)) {
+		RequestAuth Auth = RequestAuth.fromRequestParameters(request);
+		if (AuthBaseController.checkAuth(inputLogin, inputPass)) {
 			request.getRequestDispatcher("/Form.jsp").forward(request, response);
 		};
-	}
-	
-	private boolean trueAuth (String login, String pass) {
-		for (int i=0;i<LoginControl.logins.size();i++) {
-			if (LoginControl.logins.get(i).equals(inputLogin) && LoginControl.passwords.get(i).contentEquals(inputPass)) {
-				return true;
-			}
-		}
-		return false;
 	}
 	
 	private static class RequestAuth {
