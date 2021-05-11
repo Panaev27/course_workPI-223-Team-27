@@ -9,14 +9,14 @@
 </head>
 <body>
 <h1 class=titl>Авторизация</h1>
-    <form action="${pageContext.request.contextPath}/JavaAuth" method="post" class=lab>
+    <form action="${pageContext.request.contextPath}/JavaAuthManager" method="post" class=lab>
 <center>
         <label for="first">Старый логин:</label>
         <input class=box type="text" name="login" id="login" value="${login}"><br>
         <label for="second">Старый пароль: </label>
         <input class=box type="text" name="password" id="password" value="${password}"><br><br>
         <label for="first">Новый логин:</label>
-        <input class=box type="text" name="login" id="login" value="${login}"><br>
+        <input class=box type="text" name="newLogin" id="newLogin" value="${newLogin}"><br>
         <label for="second">Новый пароль: </label>
         <input class=box type="text" name="newPassword" id="newPassword" value="${newPassword}"><br><br>
         <input class=btn type="submit" name="create" value="Создать">
