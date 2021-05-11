@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%if (request.getSession().getAttribute("AuthCorrect")!="true") {
+    request.getRequestDispatcher("/Authorization.jsp").forward(request, response);} %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +24,14 @@
         <input class=btn type="submit" name="create" value="Создать">
         <input class=btn type="submit" name="change" value="Изменить">
         <input class=btn type="submit" name="del" value="Удалить"><br><br>
-        <input class=btn type="submit" name="back" value="Назад">
+       
+        <strong> </strong> ${labelText}
 </center>
 	</form>
+	<center>
+	<form action="${pageContext.request.contextPath}/Form.jsp">
+    <input class=btn type="submit" name="sign" value="Назад">
+    </center>
+    </form>
     </body>
 </html>
