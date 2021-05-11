@@ -20,6 +20,7 @@ public class Calc extends HttpServlet {
 		Calc.setAsRequestAttributesAndCalculate(request);
 		WriteInFile.addAuth(radiusGet, heightGet);
 		request.setAttribute("result",  WriteInFile.checkAuth(radiusGet, heightGet));
+		request.setAttribute("radius_result",  WriteInFile.getAuth());
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
 		
 	}

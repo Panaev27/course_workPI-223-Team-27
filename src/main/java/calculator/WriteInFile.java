@@ -25,6 +25,23 @@ public class WriteInFile {
 		return false;
 	}
 	
+	public static String getAuth() {
+		BufferedReader reader;
+		String lines = "";
+		try {
+			String line;
+			reader = new BufferedReader(new FileReader(fileBase));
+			while((line = reader.readLine())!=null) {
+				lines+=line;
+			}
+			reader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lines;
+	}
+	
 	public static boolean addAuth(String login, String password) {
 		BufferedWriter writer;
 		BufferedReader reader;
