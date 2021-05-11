@@ -10,20 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="LogControl", urlPatterns="/JavaLogControl")
-public class LoginControl extends HttpServlet {
+@WebServlet(name="AuthManager", urlPatterns="/JavaAuthManager")
+public class AuthManager extends HttpServlet {
 	
-	public static ArrayList<String> logins = new ArrayList<String>();
-	public static ArrayList<String> passwords = new ArrayList<String>();
-	
-	public LoginControl() {
-		logins.add("1");
-		passwords.add("1");
-	}
+	private static String inputLogin;
+	private static String inputPass;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestLoginControl LogControl = RequestLoginControl.fromRequestParameters(request);
-		request.getRequestDispatcher("/Results.jsp").forward(request, response);
+		AuthBaseController.addAuth(inputLogin, inputPass);
+		request.getRequestDispatcher("/Authorization.jsp").forward(request, response);
 	}
 	
 	private static class RequestLoginControl {
