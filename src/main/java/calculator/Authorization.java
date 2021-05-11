@@ -19,6 +19,8 @@ public class Authorization extends HttpServlet {
 		RequestAuth Auth = RequestAuth.fromRequestParameters(request);
 		if (AuthBaseController.checkAuth(inputLogin, inputPass)) {
 			request.getRequestDispatcher("/Form.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/Authorization.jsp").forward(request, response);
 		};
 	}
 	
