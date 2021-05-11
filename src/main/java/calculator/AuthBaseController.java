@@ -45,12 +45,12 @@ public class AuthBaseController {
 			}
 			reader.close();
 			writer = new BufferedWriter(new FileWriter(fileBase,true));
-			System.out.println(authInBase);
 			if (authInBase == false) {
 				writer.newLine();
 				writer.append(login+";"+password);
 			}
 			writer.close();
+			return !authInBase;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
