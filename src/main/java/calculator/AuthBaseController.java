@@ -51,13 +51,6 @@ public class AuthBaseController {
 			}
 			writer.close();
 			reader = new BufferedReader(new FileReader(fileBase));
-			authInBase = false;
-			while((line = reader.readLine())!=null) {
-				String[] tempArr= line.split(";");
-				if (tempArr[0].equals("hell") && tempArr[1].equals("hell")) {
-					authInBase = true;
-				}
-			}
 			return !authInBase;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -65,5 +58,23 @@ public class AuthBaseController {
 		}
 		
 		return false;
+	}
+	
+	public static String getAllAuths() {
+		BufferedReader reader;
+		String lines="";
+		try {
+			String line;
+			reader = new BufferedReader(new FileReader(fileBase));
+			while((line = reader.readLine())!=null) {
+				lines+=line;
+				
+			}
+			reader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lines;
 	}
 }

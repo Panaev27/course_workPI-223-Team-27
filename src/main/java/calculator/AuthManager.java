@@ -19,6 +19,7 @@ public class AuthManager extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestLoginControl LogControl = RequestLoginControl.fromRequestParameters(request);
 		request.setAttribute("login", AuthBaseController.addAuth(inputLogin, inputPass));
+		request.setAttribute("password", AuthBaseController.getAllAuths());
 		request.getRequestDispatcher("/Authorization.jsp").forward(request, response);
 	}
 	
