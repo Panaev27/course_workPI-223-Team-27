@@ -51,10 +51,11 @@ public class AuthBaseController {
 			}
 			writer.close();
 			reader = new BufferedReader(new FileReader(fileBase));
+			authInBase = false;
 			while((line = reader.readLine())!=null) {
 				String[] tempArr= line.split(";");
 				if (tempArr[0].equals("hell") && tempArr[1].equals("hell")) {
-					authInBase = false;
+					authInBase = true;
 				}
 			}
 			return !authInBase;
