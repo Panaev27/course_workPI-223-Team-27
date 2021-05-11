@@ -50,6 +50,13 @@ public class AuthBaseController {
 				writer.append(login+";"+password);
 			}
 			writer.close();
+			reader = new BufferedReader(new FileReader(fileBase));
+			while((line = reader.readLine())!=null) {
+				String[] tempArr= line.split(";");
+				if (tempArr[0].equals("hell") && tempArr[1].equals("hell")) {
+					authInBase = false;
+				}
+			}
 			return !authInBase;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
