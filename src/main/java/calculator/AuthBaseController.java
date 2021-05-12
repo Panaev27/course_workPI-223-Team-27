@@ -15,11 +15,6 @@ public class AuthBaseController {
 	
 	//Функция для проверки того, есть ли данная учётная запись в базе
 	public static boolean checkAuth(String login, String password) {
-		
-		if (!isCorrectAuth(login, password)&&!(login=="admin"&&password=="password")) {
-			return false;
-		}
-		
 		BufferedReader reader;
 		try {
 			String line;
@@ -136,6 +131,6 @@ public class AuthBaseController {
 	
 	//Проверка корректности логина и пароля
 	public static boolean isCorrectAuth(String login, String password) {
-		return (!(login==""||password==""||login.contains(";")||password.contains(";")||!(login=="admin"&&password=="password")));
+		return !(login==""||password==""||login.contains(";")||password.contains(";"))||!(login=="admin"&&password=="password");
 	}
 }
