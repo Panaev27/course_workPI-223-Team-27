@@ -18,7 +18,7 @@ public class AuthManager extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestLoginControl LogControl = RequestLoginControl.fromRequestParameters(request);
-		if (request.getAttribute("create")!=null) {
+		if (request.getParameter("create")!=null) {
 			if (AuthBaseController.addAuth(inputLogin, inputPass)) {
 				request.setAttribute("labelText", "Учётная запись была удачна добавлена");
 			} else {
@@ -26,8 +26,6 @@ public class AuthManager extends HttpServlet {
 			}
 			request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 		}
-		request.setAttribute("login", request.getAttribute("create"));
-		request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 	}
 	
 	private static class RequestLoginControl {
