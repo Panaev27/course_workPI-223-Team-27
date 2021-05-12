@@ -15,9 +15,11 @@ public class AuthBaseController {
 	
 	//Функция для проверки того, есть ли данная учётная запись в базе
 	public static boolean checkAuth(String login, String password) {
+		
 		if (!isCorrectAuth(login, password)) {
 			return false;
 		}
+		
 		BufferedReader reader;
 		try {
 			String line;
@@ -33,14 +35,17 @@ public class AuthBaseController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return false;
 	}
 	
 	//Функция добавления учётной записи
 	public static boolean addAuth(String login, String password) {
+		
 		if (!isCorrectAuth(login, password)) {
 			return false;
 		}
+		
 		BufferedWriter writer;
 		try {
 			boolean authInBase=checkAuth(login, password);
@@ -61,9 +66,11 @@ public class AuthBaseController {
 	
 	//Функция изменения учётной записи
 	public static boolean changeAuth(String login, String password, String newLogin, String newPassword) {
+		
 		if (!isCorrectAuth(login, password)||!isCorrectAuth(newLogin, newPassword)) {
 			return false;
 		}
+		
 		boolean isCorrectChange = false;
 		BufferedReader reader;
 		BufferedWriter writer;
@@ -94,12 +101,15 @@ public class AuthBaseController {
 	
 	//Функция удаления учётной записи
 	public static boolean deleteAuth(String login, String password) {
+		
 		if (!isCorrectAuth(login, password)) {
 			return false;
 		}
+		
 		boolean isCorrectChange = false;
 		BufferedReader reader;
 		BufferedWriter writer;
+		
 		try {
 			String line;
 			String buffer = "";
