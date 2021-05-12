@@ -17,10 +17,16 @@ public class Authorization extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestAuth Auth = RequestAuth.fromRequestParameters(request);
+		request.getSession().setAttribute("AuthCorrect", "false");
+		request.getSession().setAttribute("AuthAdminCorrect", "false");
 		if (AuthBaseController.checkAuth(inputLogin, inputPass)) {
 			request.getSession().setAttribute("AuthCorrect", "true");
-			request.getSession().setAttribute("AuthAdminCorrect", "true");
-			request.getRequestDispatcher("/Form.jsp").forward(request, response);
+			if (inputLogin.equals("admin") && inputPass.equals("password")) {
+				request.getSession().setAttribute("AuthAdminCorrect", "true");
+				request.getRequestDispatcher("/Edit.jsp").forward(request, response);
+			} else {
+				request.getRequestDispatcher("/Form.jsp").forward(request, response);
+			}
 		} else {
 			request.getRequestDispatcher("/Authorization.jsp").forward(request, response);
 		};

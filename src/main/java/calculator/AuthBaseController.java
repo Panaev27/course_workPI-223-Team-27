@@ -24,7 +24,6 @@ public class AuthBaseController {
 			}
 			reader.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -32,25 +31,33 @@ public class AuthBaseController {
 	
 	public static boolean addAuth(String login, String password) {
 		BufferedWriter writer;
-		BufferedReader reader;
 		try {
-			String line;
-			boolean authInBase=false;
-			reader = new BufferedReader(new FileReader(fileBase));
-			while((line = reader.readLine())!=null) {
-				String[] tempArr= line.split(";");
-				if (tempArr[0].equals(login) && tempArr[1].equals(password)) {
-					authInBase = true;
-				}
-			}
-			reader.close();
+			boolean authInBase=checkAuth(password, password);
 			writer = new BufferedWriter(new FileWriter(fileBase,true));
 			if (authInBase == false) {
 				writer.newLine();
 				writer.append(login+";"+password);
 			}
 			writer.close();
-			reader = new BufferedReader(new FileReader(fileBase));
+			return !authInBase;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	public static boolean changeAuth(String login, String password) {
+		BufferedWriter writer;
+		try {
+			boolean authInBase=checkAuth(password, password);
+			writer = new BufferedWriter(new FileWriter(fileBase,true));
+			if (authInBase == false) {
+				writer.newLine();
+				writer.append(login+";"+password);
+			}
+			writer.close();
 			return !authInBase;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
