@@ -87,7 +87,7 @@ public class AuthBaseController {
 	}
 	
 	public static boolean isCorrectAuth(String login, String password) {
-		return (login==""||password=="");
+		return !(login==""||password=="");
 	}
 	
 	public static String getAllAuths() {
