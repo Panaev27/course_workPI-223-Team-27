@@ -11,7 +11,7 @@ public class AuthBaseController {
 	static File fileBase = new File("/app/src/AuthBase.txt");
 	
 	public static boolean checkAuth(String login, String password) {
-		if (login==null||password==null) {
+		if (login==""||password=="") {
 			return false;
 		}
 		BufferedReader reader;
@@ -33,7 +33,7 @@ public class AuthBaseController {
 	}
 	
 	public static boolean addAuth(String login, String password) {
-		if (login==null||password==null) {
+		if (login==""||password=="") {
 			return false;
 		}
 		BufferedWriter writer;
