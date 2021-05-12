@@ -49,8 +49,8 @@ public class AuthManager extends HttpServlet {
 		private RequestLoginControl (String login, String pass, String newLogin,String newPass) {
 			AuthManager.inputLogin = login;
 			AuthManager.inputPass = pass;
-			AuthManager.inputNewLogin = login;
-			AuthManager.inputNewPass = pass;
+			AuthManager.inputNewLogin = newLogin;
+			AuthManager.inputNewPass = newPass;
 			}
 		
 		public static RequestLoginControl fromRequestParameters(HttpServletRequest request) {
