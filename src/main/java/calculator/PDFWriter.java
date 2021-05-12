@@ -1,7 +1,6 @@
 package calculator;
 
 import java.io.*;
-import java.util.stream.Stream;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -23,7 +22,7 @@ public class PDFWriter implements WriterInFile {
     }
     public void write(String[] forWrite) {
       	
-    	Document document = new Document(); //ñîçäàíèå êëàññà Document
+    	Document document = new Document(); //Создаём документ
 		try {
 			PdfWriter.getInstance(document, new FileOutputStream(new File(new File(PDFWriter.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParent()).getParent()+"/Hangar.pdf"));
 		} catch (FileNotFoundException | DocumentException e) {
@@ -32,23 +31,22 @@ public class PDFWriter implements WriterInFile {
 			 
 		document.open(); 
 		
-		BaseFont times = null;
+		BaseFont times = null;//Создаём шрифт
 		try {
 			times = BaseFont.createFont("/fonts/times.ttf", "UTF-8", BaseFont.EMBEDDED);
 		} catch (DocumentException | IOException e) {
 			e.printStackTrace();
 		}
 		
+		//Заполняем текстом
 		String string_pdf = "Your hangar parametres";
 		Paragraph paragraph = new Paragraph();
 	    paragraph.add(new Paragraph(string_pdf, new Font(times,14)));
-	
 	    try {
 			document.add(paragraph);
 		} catch (DocumentException e1) {
 			e1.printStackTrace();
 		}
-	    
 		 paragraph.clear();
 		 String string_pdf3 = " ";
 		 paragraph.add(new Paragraph(string_pdf3, new Font(times,14)));
@@ -60,8 +58,8 @@ public class PDFWriter implements WriterInFile {
 			}
     	
 		 
-		//äîáàâëåíèå òàáëèöû
-		 PdfPTable table = new PdfPTable(2); //ñîçäàíèå òàáëèöû ñ 4 ñòîëáöàìè
+		//Создаём таблицу с 2 столбцами
+		 PdfPTable table = new PdfPTable(2); 
 		 addTableCells(table);
 		 try {
 			document.add(table);
@@ -69,12 +67,13 @@ public class PDFWriter implements WriterInFile {
 			e.printStackTrace();
 		}
 	    
-	    document.close(); //çàêðûòèå è ñîõðàíåíèå äîêóìåíòà PDF
+	    document.close();
     }
     
+    //Заполнение таблицы
     private void addTableCells(PdfPTable table) {
 		
-		//çàïîëíåíèå òàáëèöû ââîäèìûìè çíà÷åíèÿ â òåêñòîâûå ïîëÿ íà ãëàâíîé ôîðìå
+		//1 столбец заполняет названиями, 2 столбец заполняется значением
     	String[] columnTitles= {"Lenght", "Width", "Height", "Type", "Form", "Panel", "Time", "Foundation", "Door", "Promo", "Price"};
 		for (int i=0;i<Calculator.outputForFile.length;i++) {
 			PdfPCell header = new PdfPCell();
@@ -84,7 +83,5 @@ public class PDFWriter implements WriterInFile {
 	        table.addCell(header);
 			table.addCell(Calculator.outputForFile[i]);
 		}
-		
-	    //âûøå äîëæåí áûòü òåêñò íà ðóññêîì ÿçûêå, êàê åãî âûâåñòè ìîæíî ïîñìîòðåòü â ñïðàâêå.
 	}
 }

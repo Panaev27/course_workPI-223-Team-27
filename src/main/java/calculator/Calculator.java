@@ -17,6 +17,7 @@ public class Calculator extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.CalculateHangarCost(request);
+		//Создаём Pdf файл
 		PDFWriter PDF = new PDFWriter();
 		PDF.write(outputForFile);
 		request.getRequestDispatcher("/Results.jsp").forward(request, response);
@@ -39,7 +40,7 @@ public class Calculator extends HttpServlet {
 		private final String inputFormHangar;
 		private final String inputPromo;
 		private final String inputPanel;
-		
+		//Массивы для перевода выбранного пункта листа в текст
 		String[] typeToString = {"Каркасно-рамочные", "Каркасно-щитовой"};
 		String[] formToString = {"Арочный", "Прямостенный", "Шатровый"};
 		String[] panelToString = {"Облегчённая сендвич-панель", "Сендвич-панель", "Утеплённая сендвич-панель"};
@@ -134,6 +135,7 @@ public class Calculator extends HttpServlet {
 			request.setAttribute("promoResult",inputPromo);
 			request.setAttribute("panelResult",panelToString[panel]);
 			double price = 0;
+			//определяем  нужный тип ангара
 			Hangar hangar;
 			switch(formHangar) {
 			case(0):
@@ -150,8 +152,8 @@ public class Calculator extends HttpServlet {
 				break;
 			 }
 			price = (hangar.getHangarArea()*ArrPanel[panel]*ArrType[type]+hangar.getHangarFoundationArea()*ArrFoundation[foundation]+hangar.getHangarDoorArea()*ArrDoor[door])*getTime(time)*getPromo(promo);
-			outputForFile= new String[] {inputx, inputy, inputz, typeToStringEn[type], formToStringEn[formHangar], panelToStringEn[panel], inputTime, foundationToStringEn[foundation], doorToStringEn[door], inputPromo, Double.toString(Math.floor(price/100)*100)};
-			request.setAttribute("price", Double.toString(Math.floor(price/100)*100));
+			outputForFile= new String[] {inputx, inputy, inputz, typeToStringEn[type], formToStringEn[formHangar], panelToStringEn[panel], inputTime, foundationToStringEn[foundation], doorToStringEn[door], inputPromo, Double.toString(Math.floor(price/100)*100)}; //заполняем значения для вывода в файл
+			request.setAttribute("price", Double.toString(Math.floor(price/100)*100)); //Выводим округлённую итоговую цену ангара
 		}
 		//функция возвращает коофициент в зависимости от времени постройки
 		private double getTime(int time) {

@@ -7,9 +7,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+//Класс для работы с "базой" паролей
 public class AuthBaseController {
-	static File fileBase = new File("/app/src/AuthBase.txt");
+	static File fileBase = new File("/app/src/AuthBase.txt"); //путь до "базы"
 	
+	//В файле каждая строка это новая учётная запись. Логин и пароль разделенны символом ";"
+	
+	//Функция для проверки того, есть ли данная учётная запись в базе
 	public static boolean checkAuth(String login, String password) {
 		if (!isCorrectAuth(login, password)) {
 			return false;
@@ -32,6 +36,7 @@ public class AuthBaseController {
 		return false;
 	}
 	
+	//Функция добавления учётной записи
 	public static boolean addAuth(String login, String password) {
 		if (!isCorrectAuth(login, password)) {
 			return false;
@@ -54,6 +59,7 @@ public class AuthBaseController {
 		return false;
 	}
 	
+	//Функция изменения учётной записи
 	public static boolean changeAuth(String login, String password, String newLogin, String newPassword) {
 		if (!isCorrectAuth(login, password)||!isCorrectAuth(newLogin, newPassword)) {
 			return false;
@@ -86,6 +92,7 @@ public class AuthBaseController {
 		return isCorrectChange;
 	}
 	
+	//Функция удаления учётной записи
 	public static boolean deleteAuth(String login, String password) {
 		if (!isCorrectAuth(login, password)) {
 			return false;
@@ -117,25 +124,8 @@ public class AuthBaseController {
 		return isCorrectChange;
 	}
 	
+	//Проверка корректности логина и пароля
 	public static boolean isCorrectAuth(String login, String password) {
 		return !(login==""||password=="");
-	}
-	
-	public static String getAllAuths() {
-		BufferedReader reader;
-		String lines="";
-		try {
-			String line;
-			reader = new BufferedReader(new FileReader(fileBase));
-			while((line = reader.readLine())!=null) {
-				lines+=line;
-				
-			}
-			reader.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return lines;
 	}
 }
