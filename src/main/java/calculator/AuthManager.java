@@ -15,18 +15,24 @@ public class AuthManager extends HttpServlet {
 	
 	private static String inputLogin;
 	private static String inputPass;
+	private static String inputNewLogin;
+	private static String inputNewPass;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestLoginControl LogControl = RequestLoginControl.fromRequestParameters(request);
 		if (request.getParameter("create")!=null) {
-			if (AuthBaseController.addAuth(inputLogin, inputPass)) {
+			if (AuthBaseController.addAuth(inputNewLogin, inputNewPass)) {
 				request.setAttribute("labelText", "Учётная запись была удачна добавлена");
 			} else {
 				request.setAttribute("labelText", "Учётную запись не получилось добавить");
 			}
 			request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 		} else if (request.getParameter("change")!=null) {
-			request.setAttribute("labelText", "Не добавлено изменение");
+			if (AuthBaseController.changeAuth(inputLogin, inputPass, inputNewLogin, inputNewLogin)) {
+				request.setAttribute("labelText", "Учётная запись была успешно изменена");
+			} else {
+				request.setAttribute("labelText", "Учётную запись не получилось изменить");
+			}
 			request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 		} else if (request.getParameter("del")!=null) {
 			request.setAttribute("labelText", "Не добавлено удаление");
