@@ -17,7 +17,10 @@ public class AuthManager extends HttpServlet {
 	private static String inputNewPass;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestLoginControl LogControl = RequestLoginControl.fromRequestParameters(request);
+		inputLogin = request.getParameter("login");
+		inputPass = request.getParameter("password");
+		inputNewLogin = request.getParameter("newLogin");
+		inputNewPass = request.getParameter("newPassword");
 		//Выполнение определённой функции в зависимости от нажатой кнопки, а так же вывод сообщения об успехе.
 		if (request.getParameter("create")!=null) { //Функция добавления
 			if (AuthBaseController.addAuth(inputNewLogin, inputNewPass)) {
@@ -41,24 +44,6 @@ public class AuthManager extends HttpServlet {
 			}
 			request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 		}
-	}
-	
-	private static class RequestLoginControl {
-		
-		private RequestLoginControl (String login, String pass, String newLogin,String newPass) {
-			AuthManager.inputLogin = login;
-			AuthManager.inputPass = pass;
-			AuthManager.inputNewLogin = newLogin;
-			AuthManager.inputNewPass = newPass;
-			}
-		
-		public static RequestLoginControl fromRequestParameters(HttpServletRequest request) {
-			return new RequestLoginControl(
-			request.getParameter("login"),
-			request.getParameter("password"),
-			request.getParameter("newLogin"),
-			request.getParameter("newPassword"));
-			}
 	}
 	
 }

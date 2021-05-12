@@ -15,7 +15,8 @@ public class Authorization extends HttpServlet {
 	private static String inputPass;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestAuth Auth = RequestAuth.fromRequestParameters(request);
+		inputLogin = request.getParameter("login");
+		inputPass = request.getParameter("password");
 		request.getSession().setAttribute("AuthCorrect", "false");
 		request.getSession().setAttribute("AuthAdminCorrect", "false");
 		//Проверяем введёные данные
@@ -31,21 +32,6 @@ public class Authorization extends HttpServlet {
 		} else {
 			request.getRequestDispatcher("/Authorization.jsp").forward(request, response);
 		};
-	}
-	
-	private static class RequestAuth {
-		
-		private RequestAuth (String login, String pass) {
-			Authorization.inputLogin = login;
-			Authorization.inputPass = pass;
-			
-			}
-		
-		public static RequestAuth fromRequestParameters(HttpServletRequest request) {
-			return new RequestAuth(
-			request.getParameter("login"),
-			request.getParameter("password"));
-			}
 	}
 	
 }
