@@ -62,7 +62,10 @@ public class AuthBaseController {
 	//Функция изменения учётной записи
 	public static boolean changeAuth(String login, String password, String newLogin, String newPassword) {
 		
-		if (!(isCorrectAuth(login, password)||isCorrectAuth(newLogin, newPassword))) {
+		if (!(isCorrectAuth(login, password)&&isCorrectAuth(newLogin, newPassword))) {
+			return false;
+		}
+		if (login=="admin"&&password=="password") {
 			return false;
 		}
 		
@@ -100,6 +103,9 @@ public class AuthBaseController {
 		if (!isCorrectAuth(login, password)) {
 			return false;
 		}
+		if (login=="admin"&&password=="password") {
+			return false;
+		}
 		
 		boolean isCorrectChange = false;
 		BufferedReader reader;
@@ -131,6 +137,6 @@ public class AuthBaseController {
 	
 	//Проверка корректности логина и пароля
 	public static boolean isCorrectAuth(String login, String password) {
-		return !(login==""||password==""||login.contains(";")||password.contains(";")||(login=="admin"&&password=="password"));
+		return !(login==""||password==""||login.contains(";")||password.contains(";"));
 	}
 }
