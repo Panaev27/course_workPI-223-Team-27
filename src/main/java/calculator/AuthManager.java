@@ -26,6 +26,8 @@ public class AuthManager extends HttpServlet {
 			}
 			request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 		}
+		request.setAttribute("login", request.getAttribute("create"));
+		request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 	}
 	
 	private static class RequestLoginControl {
