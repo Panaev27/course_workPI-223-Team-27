@@ -24,9 +24,9 @@
         
         <strong> </strong> ${labelText}<br><br>
         
-        <input class=btn type="submit" name="create" value="Создать ">
-        <input class=btn type="submit" name="change" value="Изменить ">
-        <input class=btn type="submit" name="del" value="Удалить "><br><br>
+        <input class=btn type="submit" name="create" value="create">
+        <input class=btn type="submit" name="change" value="change">
+        <input class=btn type="submit" name="del" value="del"><br><br>
 
 	</form>    
 	  
