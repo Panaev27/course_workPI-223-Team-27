@@ -62,7 +62,7 @@ public class AuthBaseController {
 	//Функция изменения учётной записи
 	public static boolean changeAuth(String login, String password, String newLogin, String newPassword) {
 		
-		if (!isCorrectAuth(login, password)||!isCorrectAuth(newLogin, newPassword)) {
+		if (!(isCorrectAuth(login, password)||isCorrectAuth(newLogin, newPassword))) {
 			return false;
 		}
 		
