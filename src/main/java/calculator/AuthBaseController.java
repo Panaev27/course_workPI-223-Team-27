@@ -11,7 +11,7 @@ public class AuthBaseController {
 	static File fileBase = new File("/app/src/AuthBase.txt");
 	
 	public static boolean checkAuth(String login, String password) {
-		if (login==""||password=="") {
+		if (!isCorrectAuth(login, password)) {
 			return false;
 		}
 		BufferedReader reader;
@@ -33,7 +33,7 @@ public class AuthBaseController {
 	}
 	
 	public static boolean addAuth(String login, String password) {
-		if (login==""||password=="") {
+		if (!isCorrectAuth(login, password)) {
 			return false;
 		}
 		BufferedWriter writer;
@@ -54,23 +54,40 @@ public class AuthBaseController {
 		return false;
 	}
 	
-	public static boolean changeAuth(String login, String password) {
+	public static boolean changeAuth(String login, String password, String newLogin, String newPassword) {
+		if (!isCorrectAuth(login, password)) {
+			return false;
+		}
+		boolean isCorrectChange = false;
+		BufferedReader reader;
 		BufferedWriter writer;
 		try {
-			boolean authInBase=checkAuth(password, password);
-			writer = new BufferedWriter(new FileWriter(fileBase,true));
-			if (authInBase == false) {
-				writer.newLine();
-				writer.append(login+";"+password);
+			String line;
+			String buffer = "";
+			reader = new BufferedReader(new FileReader(fileBase));
+			while((line = reader.readLine())!=null) {
+				String[] tempArr= line.split(";");
+				if (tempArr[0].equals(login) && tempArr[1].equals(password)) {
+					buffer+=newLogin+";"+newPassword+"\n";
+					isCorrectChange = true;
+				} else {
+					buffer+=line+"\n";
+				}
 			}
-			writer.close();
-			return !authInBase;
+			reader.close();
+			if (isCorrectChange) {
+				writer = new BufferedWriter(new FileWriter(fileBase));
+				writer.write(buffer.substring(0, buffer.length()-1));
+				writer.close();
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return false;
+		return isCorrectChange;
+	}
+	
+	public static boolean isCorrectAuth(String login, String password) {
+		return (login==""||password=="");
 	}
 	
 	public static String getAllAuths() {
