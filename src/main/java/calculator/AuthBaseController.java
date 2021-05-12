@@ -136,6 +136,6 @@ public class AuthBaseController {
 	
 	//Проверка корректности логина и пароля
 	public static boolean isCorrectAuth(String login, String password) {
-		return (!(login==""||password==""||login.contains(";")||password.contains(";")||login=="admin"||password=="password"));
+		return (!(login==""||password==""||login.contains(";")||password.contains(";")||(login=="admin"&&password=="password")));
 	}
 }
