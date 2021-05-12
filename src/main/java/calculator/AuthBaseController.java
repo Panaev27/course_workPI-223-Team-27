@@ -32,7 +32,7 @@ public class AuthBaseController {
 	public static boolean addAuth(String login, String password) {
 		BufferedWriter writer;
 		try {
-			boolean authInBase=checkAuth(password, password);
+			boolean authInBase=checkAuth(login, password);
 			writer = new BufferedWriter(new FileWriter(fileBase,true));
 			if (authInBase == false) {
 				writer.newLine();
