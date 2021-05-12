@@ -35,22 +35,30 @@ public class AuthManager extends HttpServlet {
 			}
 			request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 		} else if (request.getParameter("del")!=null) {
-			request.setAttribute("labelText", "Не добавлено удаление");
+			if (AuthBaseController.deleteAuth(inputLogin, inputPass)) {
+				request.setAttribute("labelText", "Учётная запись была успешно удалена");
+			} else {
+				request.setAttribute("labelText", "Учётную запись не получилось удалить");
+			}
 			request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 		}
 	}
 	
 	private static class RequestLoginControl {
 		
-		private RequestLoginControl (String login, String pass) {
+		private RequestLoginControl (String login, String pass, String newLogin,String newPass) {
 			AuthManager.inputLogin = login;
 			AuthManager.inputPass = pass;
+			AuthManager.inputNewLogin = login;
+			AuthManager.inputNewPass = pass;
 			}
 		
 		public static RequestLoginControl fromRequestParameters(HttpServletRequest request) {
 			return new RequestLoginControl(
 			request.getParameter("login"),
-			request.getParameter("password"));
+			request.getParameter("password"),
+			request.getParameter("newLogin"),
+			request.getParameter("newPassword"));
 			}
 	}
 	

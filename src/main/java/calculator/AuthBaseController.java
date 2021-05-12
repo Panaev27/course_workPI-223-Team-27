@@ -55,7 +55,7 @@ public class AuthBaseController {
 	}
 	
 	public static boolean changeAuth(String login, String password, String newLogin, String newPassword) {
-		if (!isCorrectAuth(login, password)) {
+		if (!isCorrectAuth(login, password)||!isCorrectAuth(newLogin, newPassword)) {
 			return false;
 		}
 		boolean isCorrectChange = false;
@@ -69,6 +69,37 @@ public class AuthBaseController {
 				String[] tempArr= line.split(";");
 				if (tempArr[0].equals(login) && tempArr[1].equals(password)) {
 					buffer+=newLogin+";"+newPassword+"\n";
+					isCorrectChange = true;
+				} else {
+					buffer+=line+"\n";
+				}
+			}
+			reader.close();
+			if (isCorrectChange) {
+				writer = new BufferedWriter(new FileWriter(fileBase));
+				writer.write(buffer.substring(0, buffer.length()-1));
+				writer.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return isCorrectChange;
+	}
+	
+	public static boolean deleteAuth(String login, String password) {
+		if (!isCorrectAuth(login, password)) {
+			return false;
+		}
+		boolean isCorrectChange = false;
+		BufferedReader reader;
+		BufferedWriter writer;
+		try {
+			String line;
+			String buffer = "";
+			reader = new BufferedReader(new FileReader(fileBase));
+			while((line = reader.readLine())!=null) {
+				String[] tempArr= line.split(";");
+				if (tempArr[0].equals(login) && tempArr[1].equals(password)) {
 					isCorrectChange = true;
 				} else {
 					buffer+=line+"\n";
