@@ -1,4 +1,4 @@
-package calculator;
+package authorization;
 
 import java.io.IOException;
 
