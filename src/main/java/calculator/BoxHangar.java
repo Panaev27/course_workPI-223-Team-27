@@ -2,7 +2,7 @@ package calculator;
 
 public class BoxHangar extends Hangar {
 
-	BoxHangar(double _height, double _width, double _length) {
+	public BoxHangar(double _height, double _width, double _length) {
 		super(_height, _width, _length);
 	}
 	

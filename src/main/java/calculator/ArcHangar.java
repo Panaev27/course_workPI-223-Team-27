@@ -2,7 +2,7 @@ package calculator;
 
 public class ArcHangar extends Hangar {
 
-	ArcHangar(double _height, double _width, double _length) {
+	public ArcHangar(double _height, double _width, double _length) {
 		super(_height, _width, _length);
 	}
 	@Override

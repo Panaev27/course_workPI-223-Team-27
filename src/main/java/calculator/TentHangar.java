@@ -2,7 +2,7 @@ package calculator;
 
 public class TentHangar extends Hangar {
 
-	TentHangar(double _height, double _width, double _length) {
+	public TentHangar(double _height, double _width, double _length) {
 		super(_height, _width, _length);
 	}
 	@Override
