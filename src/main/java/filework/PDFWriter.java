@@ -60,7 +60,7 @@ public class PDFWriter implements WriterInFile {
 		 
 		//Создаём таблицу с 2 столбцами
 		 PdfPTable table = new PdfPTable(2); 
-		 addTableCells(table);
+		 addTableCells(table, forWrite);
 		 try {
 			document.add(table);
 		} catch (DocumentException e) {
@@ -71,17 +71,17 @@ public class PDFWriter implements WriterInFile {
     }
     
     //Заполнение таблицы
-    private void addTableCells(PdfPTable table) {
+    private void addTableCells(PdfPTable table, String[] forWrite) {
 		
 		//1 столбец заполняет названиями, 2 столбец заполняется значением
     	String[] columnTitles= {"Lenght", "Width", "Height", "Type", "Form", "Panel", "Time", "Foundation", "Door", "Promo", "Price"};
-		for (int i=0;i<Calculator.outputForFile.length;i++) {
+		for (int i=0;i<forWrite.length;i++) {
 			PdfPCell header = new PdfPCell();
 			header.setBackgroundColor(BaseColor.LIGHT_GRAY);
 	        header.setBorderWidth(2);
 	        header.setPhrase(new Phrase(columnTitles[i]));
 	        table.addCell(header);
-			table.addCell(Calculator.outputForFile[i]);
+			table.addCell(forWrite[i]);
 		}
 	}
 }
