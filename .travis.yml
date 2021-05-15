@@ -10,3 +10,10 @@ after_succes:
 - echo "Build ready"
 after_failure:
 - echo "Build failure"
+deploy:
+  provider: heroku
+  api_key:
+    secure: WaHagJWJYAMQKQ72Db44n8OVOZ0evdaAH/uFjnj9kXaVEHaR1B2UG9XAc4hPd8jj11WGdgru5ANOlsXD5LejxG6fPsCkmrRPQgcgPWDmxOeuPWPM2AtXKLk+DTJ1va7DRJ/7ipvmKjXRLqJbl7b+AYWyzg3tCRT8L8Ggg4t2TXdYZkDBpa6ehXm1Ho7RBhjroEpuFLepI8UY3lEz72UEY2f0qwFrU+Xl0KiMrE2Odh7DiNnkkdkt8x7ksnronX6MVRz+D8rPoZ/o8O0brHfHFlCINuJ9ir6Ht/+tBxYhpJYvX0FPFd8UckAG259nAu2btHJUM1dAtoPkVamonmudqFx++X06oh1f6z9+zgmIHbXAU/+Yaxbj6e34qWFqdqtfvPL3AXYCaIrWOO6CGKBJl8GPaUopvqVgx5ERhAcW3CSirWtLZpO38FHA6VKhaaZRYz3Ch1u+M5VdqtAhY54yqzAoNoVropPwznr3wcdKrv4iASAlzoJZ26A2PLyhdBrMJLkuFFBQEYBTVmtlLM63GWtSMVwbQG1V2st0HhBoTJa0l6jfHZQksY/iRm3Df7Sq5c8OTO2REptMcDe2IA8IvBFBvMgRL2oir1miPyr0+eXeOpmK2il7TODj/BNZmsWTrmi6ZaRe6LN3RwLaArXNlIBveTuwfZsA9wRNk/U/z0Q=
+  app: cw-pi223-27
+  on:
+    repo: Panaev27/course_workPI-223-Team-27
