@@ -26,7 +26,7 @@ public class Authorization extends HttpServlet {
 			request.getSession().setAttribute("AuthCorrect", "true");
 			
 			//Проверяем введёные данные, если они админские
-			if (inputLogin.equals("admin") && inputPass.equals("password")) {
+			if (AuthBaseController.isAdminAuth(inputLogin,inputPass)) {
 				request.getSession().setAttribute("AuthAdminCorrect", "true");
 				request.getRequestDispatcher("/Edit.jsp").forward(request, response);
 			} else {

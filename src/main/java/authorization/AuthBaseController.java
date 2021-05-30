@@ -132,9 +132,27 @@ public class AuthBaseController {
 	//Проверка корректности логина и пароля
 	public static boolean isCorrectAuth(String login, String password) {
 		boolean isCorrect = !(login==""||password==""||login.contains(";")||password.contains(";"));
-		if (login.equals("admin")&&password.equals("password")) {
+		if (isAdminAuth(login, password)) {
 			isCorrect = false;
 		}
 		return isCorrect;
+	}
+	
+	public static boolean isAdminAuth(String login, String password) {
+		boolean isAdmin=false;
+		
+		BufferedReader reader;
+		String[] adminAuth;
+		try {
+			reader = new BufferedReader(new FileReader(fileBase));
+			adminAuth= reader.readLine().split(";");
+			reader.close();
+			if (login.equals(adminAuth[0])&&password.equals(adminAuth[1])) {
+				isAdmin = true;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return isAdmin;
 	}
 }
