@@ -9,7 +9,7 @@ import java.io.IOException;
 
 //Класс для работы с "базой" паролей
 public class AuthBaseController {
-	static File fileBase = new File("/app/src/AuthBase.txt"); //путь до "базы"
+	public static File fileBase = new File(new File(AuthBaseController.class.getProtectionDomain().getCodeSource().getLocation().getPath())+"/AuthBase.txt"); //путь до "базы"
 	
 	//В файле каждая строка это новая учётная запись. Логин и пароль разделенны символом ";"
 	
