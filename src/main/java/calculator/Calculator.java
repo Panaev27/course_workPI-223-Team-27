@@ -17,6 +17,7 @@ public class Calculator extends HttpServlet {
 	public static String[] outputForFile;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.CalculateHangarCost(request);
 		//Создаём Pdf файл
